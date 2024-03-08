@@ -38,6 +38,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.modulith:spring-modulith-starter-test'
 	testImplementation 'io.rest-assured:rest-assured:5.4.0'
+	testImplementation 'com.approvaltests:approvaltests:22.4.0'
 }
 
 dependencyManagement {

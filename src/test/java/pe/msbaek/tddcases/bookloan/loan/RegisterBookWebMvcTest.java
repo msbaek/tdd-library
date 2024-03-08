@@ -1,6 +1,7 @@
 package pe.msbaek.tddcases.bookloan.loan;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.approvaltests.Approvals;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,13 +9,12 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 import java.time.LocalDate;
 
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(BookController.class)
@@ -30,10 +30,12 @@ public class RegisterBookWebMvcTest {
         Book book = new Book("The Great Gatsby", "F. Scott Fitzgerald", LocalDate.parse(publishedDateString));
         given(bookRepository.save(Mockito.<Book>any())).willReturn(book);
 
-        mockMvc.perform(post("/books")
+        MvcResult result = mockMvc.perform(post("/books")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("The Great Gatsby")));
+                .andReturn();
+//                .andExpect(content().string(containsString("The Great Gatsby")));
+        Approvals.verify(result.getResponse().getContentAsString());
     }
 }
