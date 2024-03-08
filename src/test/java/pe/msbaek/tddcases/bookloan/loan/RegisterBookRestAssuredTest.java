@@ -6,8 +6,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 
-import java.time.LocalDate;
-
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -17,13 +15,14 @@ public class RegisterBookRestAssuredTest {
 
     @Test
     void register_book_successfully() {
-        Book book = new Book("The Great Gatsby", "F. Scott Fitzgerald", LocalDate.now());
+        String publishedDateString = "1925-04-10";
+        BookController.Request request = new BookController.Request("The Great Gatsby", "F. Scott Fitzgerald", publishedDateString);
 
         given()
                 .baseUri("http://localhost")
                 .port(port)
                 .contentType(ContentType.JSON)
-                .body(book)
+                .body(request)
         .when()
                 .post("/books")
         .then()

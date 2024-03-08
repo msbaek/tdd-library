@@ -11,7 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class BookController {
     @PostMapping("/books")
-    public ResponseEntity<?> addBook(@RequestBody Book book) {
-        return new ResponseEntity<>(book, HttpStatus.OK);
+    public ResponseEntity<Response> addBook(@RequestBody Request request) {
+        return new ResponseEntity<>(
+                new Response(request.title(), request.author(), request.publishedDate()),
+                HttpStatus.OK);
     }
+
+    record Request(String title, String author, String publishedDate) {}
+    record Response(String title, String author, String publishedDate) {}
 }
