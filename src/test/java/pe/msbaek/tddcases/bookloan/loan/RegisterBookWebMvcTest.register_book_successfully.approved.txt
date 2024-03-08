@@ -1,1 +1,4 @@
-{"title":"The Great Gatsby","author":"F. Scott Fitzgerald","publishedDate":"1925-04-10"}
+---
+title: "The Great Gatsby"
+author: "F. Scott Fitzgerald"
+publishedDate: "1925-04-10"

@@ -1,6 +1,7 @@
 package pe.msbaek.tddcases.bookloan.loan;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ktown4u.utils.YamlPrinter;
 import org.approvaltests.Approvals;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -36,6 +37,7 @@ public class RegisterBookWebMvcTest {
                 .andExpect(status().isOk())
                 .andReturn();
 //                .andExpect(content().string(containsString("The Great Gatsby")));
-        Approvals.verify(result.getResponse().getContentAsString());
+        BookController.Response response = objectMapper.readValue(result.getResponse().getContentAsString(), BookController.Response.class);
+        Approvals.verify(YamlPrinter.print(response));
     }
 }
