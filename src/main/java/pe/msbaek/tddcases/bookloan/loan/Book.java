@@ -14,10 +14,17 @@ public class Book {
 
     private String title;
     private String author;
+    private final LocalDate publishedDate;
     private LocalDate publishDate;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<BookCopy> copies = new HashSet<>();
+
+    public Book(String title, String author, LocalDate publishedDate) {
+        this.title = title;
+        this.author = author;
+        this.publishedDate = publishedDate;
+    }
 
     // 생성자, 게터 및 세터 생략
 
