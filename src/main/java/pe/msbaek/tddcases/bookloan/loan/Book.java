@@ -17,7 +17,6 @@ public class Book {
     private String title;
     private String author;
     private final LocalDate publishedDate;
-    private LocalDate publishDate;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<BookCopy> copies = new HashSet<>();

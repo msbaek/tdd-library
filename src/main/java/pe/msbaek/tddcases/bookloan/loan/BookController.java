@@ -7,13 +7,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
+
 @RequiredArgsConstructor
 @RestController
 public class BookController {
+    private final BookRepository bookRepository;
+
     @PostMapping("/books")
     public ResponseEntity<Response> addBook(@RequestBody Request request) {
+        // validate
+        // save
+        LocalDate publishedDate = LocalDate.parse(request.publishedDate());
+        bookRepository.save(new Book(request.title(), request.author(), publishedDate));
+        Response response = new Response(request.title(), request.author(), request.publishedDate());
         return new ResponseEntity<>(
-                new Response(request.title(), request.author(), request.publishedDate()),
+                response,
                 HttpStatus.OK);
     }
 
