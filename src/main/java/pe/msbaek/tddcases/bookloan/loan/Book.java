@@ -1,11 +1,13 @@
 package pe.msbaek.tddcases.bookloan.loan;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+@Getter
 @Entity
 public class Book {
     @Id

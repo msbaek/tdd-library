@@ -24,9 +24,9 @@ public class RegisterBookRestAssuredTest {
                 .port(port)
                 .contentType(ContentType.JSON)
                 .body(book)
-                .when()
+        .when()
                 .post("/books")
-                .then()
+        .then()
                 .statusCode(HttpStatus.OK.value())
                 .body("title", equalTo("The Great Gatsby"));
     }
