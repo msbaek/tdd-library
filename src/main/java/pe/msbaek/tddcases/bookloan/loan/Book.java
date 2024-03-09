@@ -2,11 +2,15 @@ package pe.msbaek.tddcases.bookloan.loan;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+@Accessors(fluent = true)
+@NoArgsConstructor
 @Getter
 @Entity
 public class Book {
@@ -16,7 +20,7 @@ public class Book {
 
     private String title;
     private String author;
-    private final LocalDate publishedDate;
+    private LocalDate publishedDate;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<BookCopy> copies = new HashSet<>();
