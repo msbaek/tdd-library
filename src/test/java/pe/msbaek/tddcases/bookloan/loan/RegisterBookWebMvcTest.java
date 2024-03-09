@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(BookController.class)
 public class RegisterBookWebMvcTest {
     @Autowired private MockMvc mockMvc;
-    @MockBean private BookRepository bookRepository;
+    @MockBean private RegisterNewBook registerNewBook;
     @Autowired private ObjectMapper objectMapper;
     private String publishedDateString;
     private String title;
@@ -42,7 +42,7 @@ public class RegisterBookWebMvcTest {
     void register_book_successfully() throws Exception {
         BookController.Request request = createBookWith(title);
         Book book = new Book(title, author, LocalDate.parse(publishedDateString));
-        given(bookRepository.save(Mockito.<Book>any())).willReturn(book);
+        given(registerNewBook.registerNewBook(Mockito.<Book>any())).willReturn(book);
 
         MvcResult result = getMvcResult(request, status().isOk());
 
@@ -64,7 +64,7 @@ public class RegisterBookWebMvcTest {
     void register_book_failed_because_of_duplicated_book() throws Exception {
         BookController.Request request = createBookWith(title);
         Book book = new Book(title, author, LocalDate.parse(publishedDateString));
-        given(bookRepository.findByTitle(title)).willReturn(Optional.of(book));
+        given(registerNewBook.registerNewBook(Mockito.<Book>any())).willThrow(new IllegalArgumentException("title is already exists"));
 
         MvcResult result = getMvcResult(request, status().isBadRequest());
 

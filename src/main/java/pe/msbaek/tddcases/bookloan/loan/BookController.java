@@ -15,12 +15,12 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 @RestController
 public class BookController {
-    private final BookRepository bookRepository;
+    private final RegisterNewBook registerNewBook;
 
     @PostMapping("/books")
     public ResponseEntity<Response> addBook(@RequestBody @Valid Request request) {
         Book newBook = toModel(request);
-        Book registeredBook = registerNewBook(newBook);
+        Book registeredBook = registerNewBook.registerNewBook(newBook);
         String formattedPublishedDate = registeredBook.publishedDate().toString();
         Response response = new Response(registeredBook.title(), registeredBook.author(), formattedPublishedDate);
         return new ResponseEntity<>(
@@ -31,17 +31,6 @@ public class BookController {
     // TODO: use MapStruct
     private Book toModel(Request request) {
         return new Book(request.title(), request.author(), LocalDate.parse(request.publishedDate()));
-    }
-
-    private Book registerNewBook(Book request) {
-        // validate
-        bookRepository.findByTitle(request.title())
-                .ifPresent(book -> {
-                    throw new IllegalArgumentException("title is already exists");
-                });
-
-        // save
-        return bookRepository.save(request);
     }
 
     record Request(
