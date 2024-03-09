@@ -53,6 +53,6 @@ public class RegisterBookWebMvcTest {
                 .andExpect(status().isBadRequest())
                 .andReturn();
 
-        Approvals.verify(result.getResponse().getContentAsString());
+        Approvals.verify(YamlPrinter.print(result.getResponse().getContentAsString()));
     }
 }

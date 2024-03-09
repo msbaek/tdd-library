@@ -17,6 +17,9 @@ public class BookController {
     @PostMapping("/books")
     public ResponseEntity<Response> addBook(@RequestBody Request request) {
         // validate
+        if (request.title() == null || request.title().isBlank()) {
+            throw new IllegalArgumentException("title is required");
+        }
         // save
         LocalDate publishedDate = LocalDate.parse(request.publishedDate());
         bookRepository.save(new Book(request.title(), request.author(), publishedDate));
