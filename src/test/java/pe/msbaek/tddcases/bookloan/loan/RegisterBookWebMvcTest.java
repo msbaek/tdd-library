@@ -3,6 +3,7 @@ package pe.msbaek.tddcases.bookloan.loan;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ktown4u.utils.YamlPrinter;
 import org.approvaltests.Approvals;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -12,6 +13,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultMatcher;
 
 import java.time.LocalDate;
 
@@ -24,19 +26,24 @@ public class RegisterBookWebMvcTest {
     @Autowired private MockMvc mockMvc;
     @MockBean private BookRepository bookRepository;
     @Autowired private ObjectMapper objectMapper;
+    private String publishedDateString;
+    private String title;
+    private String author;
+
+    @BeforeEach
+    void setUp() {
+        publishedDateString = "1925-04-10";
+        title = "The Great Gatsby";
+        author = "F. Scott Fitzgerald";
+    }
 
     @Test
     void register_book_successfully() throws Exception {
-        String publishedDateString = "1925-04-10";
-        BookController.Request request = new BookController.Request("The Great Gatsby", "F. Scott Fitzgerald", publishedDateString);
-        Book book = new Book("The Great Gatsby", "F. Scott Fitzgerald", LocalDate.parse(publishedDateString));
+        BookController.Request request = createBookWith(title);
+        Book book = new Book(title, author, LocalDate.parse(publishedDateString));
         given(bookRepository.save(Mockito.<Book>any())).willReturn(book);
 
-        MvcResult result = mockMvc.perform(post("/books")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(request)))
-                .andExpect(status().isOk())
-                .andReturn();
+        MvcResult result = getMvcResult(request, status().isOk());
 
         BookController.Response response = objectMapper.readValue(result.getResponse().getContentAsString(), BookController.Response.class);
         Approvals.verify(YamlPrinter.print(response));
@@ -45,14 +52,21 @@ public class RegisterBookWebMvcTest {
     @Test
     @DisplayName("필수 정보가 누락된 경우 어떤 필수 정보가 누락되었는지 알려주는 에러 메시지를 반환한다")
     void register_book_failed_because_of_required_items() throws Exception {
-        String publishedDateString = "1925-04-10";
-        BookController.Request request = new BookController.Request(null, "F. Scott Fitzgerald", publishedDateString);
-        MvcResult result = mockMvc.perform(post("/books")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(request)))
-                .andExpect(status().isBadRequest())
-                .andReturn();
+        BookController.Request request = createBookWith(null);
+        MvcResult result = getMvcResult(request, status().isBadRequest());
 
         Approvals.verify(YamlPrinter.print(result.getResponse().getContentAsString()));
+    }
+
+    private MvcResult getMvcResult(BookController.Request request, ResultMatcher expectedStatus) throws Exception {
+        return mockMvc.perform(post("/books")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+                .andExpect(expectedStatus)
+                .andReturn();
+    }
+
+    private BookController.Request createBookWith(String title) {
+        return new BookController.Request(title, author, publishedDateString);
     }
 }
