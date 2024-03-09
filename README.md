@@ -97,7 +97,7 @@ Loan --> BookCopy : "loans >"
 @enduml
 ```
 
-#### 동적 모델링￼
+#### 동적 모델링
 
 ##### Use Cases
 - Happy Case: 도서 추가 성공

@@ -3,6 +3,7 @@ package pe.msbaek.tddcases.bookloan.loan;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ktown4u.utils.YamlPrinter;
 import org.approvaltests.Approvals;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +37,22 @@ public class RegisterBookWebMvcTest {
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
                 .andReturn();
-//                .andExpect(content().string(containsString("The Great Gatsby")));
+
         BookController.Response response = objectMapper.readValue(result.getResponse().getContentAsString(), BookController.Response.class);
         Approvals.verify(YamlPrinter.print(response));
+    }
+
+    @Test
+    @DisplayName("필수 정보가 누락된 경우 어떤 필수 정보가 누락되었는지 알려주는 에러 메시지를 반환한다")
+    void register_book_failed_because_of_required_items() throws Exception {
+        String publishedDateString = "1925-04-10";
+        BookController.Request request = new BookController.Request(null, "F. Scott Fitzgerald", publishedDateString);
+        MvcResult result = mockMvc.perform(post("/books")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+                .andExpect(status().isBadRequest())
+                .andReturn();
+
+        Approvals.verify(result.getResponse().getContentAsString());
     }
 }
