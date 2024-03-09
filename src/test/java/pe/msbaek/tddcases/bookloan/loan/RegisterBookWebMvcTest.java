@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultMatcher;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -63,7 +64,7 @@ public class RegisterBookWebMvcTest {
     void register_book_failed_because_of_duplicated_book() throws Exception {
         BookController.Request request = createBookWith(title);
         Book book = new Book(title, author, LocalDate.parse(publishedDateString));
-        given(bookRepository.findByTitle(title)).willReturn(book);
+        given(bookRepository.findByTitle(title)).willReturn(Optional.of(book));
 
         MvcResult result = getMvcResult(request, status().isBadRequest());
 

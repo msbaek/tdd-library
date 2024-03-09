@@ -21,6 +21,11 @@ public class BookController {
             throw new IllegalArgumentException("title is required");
         }
         // save
+        bookRepository.findByTitle(request.title())
+                .ifPresent(book -> {
+                    throw new IllegalArgumentException("title is already exists");
+                });
+
         LocalDate publishedDate = LocalDate.parse(request.publishedDate());
         bookRepository.save(new Book(request.title(), request.author(), publishedDate));
         Response response = new Response(request.title(), request.author(), request.publishedDate());
