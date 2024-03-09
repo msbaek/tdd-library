@@ -1,3 +1,15 @@
 --- "ErrorResponse{status=400 BAD_REQUEST, headers=[], body=ProblemDetail[type='about:blank',\
-  \ title='Bad Request', status=400, detail='title is required', instance='null',\
-  \ properties='null'], exception=java.lang.IllegalArgumentException: title is required}"
+  \ title='Bad Request', status=400, detail='Validation failed for argument [0] in\
+  \ public org.springframework.http.ResponseEntity<pe.msbaek.tddcases.bookloan.loan.BookController$Response>\
+  \ pe.msbaek.tddcases.bookloan.loan.BookController.addBook(pe.msbaek.tddcases.bookloan.loan.BookController$Request):\
+  \ [Field error in object 'request' on field 'title': rejected value [null]; codes\
+  \ [NotBlank.request.title,NotBlank.title,NotBlank.java.lang.String,NotBlank]; arguments\
+  \ [org.springframework.context.support.DefaultMessageSourceResolvable: codes [request.title,title];\
+  \ arguments []; default message [title]]; default message [title is required]] ',\
+  \ instance='null', properties='null'], exception=org.springframework.web.bind.MethodArgumentNotValidException:\
+  \ Validation failed for argument [0] in public org.springframework.http.ResponseEntity<pe.msbaek.tddcases.bookloan.loan.BookController$Response>\
+  \ pe.msbaek.tddcases.bookloan.loan.BookController.addBook(pe.msbaek.tddcases.bookloan.loan.BookController$Request):\
+  \ [Field error in object 'request' on field 'title': rejected value [null]; codes\
+  \ [NotBlank.request.title,NotBlank.title,NotBlank.java.lang.String,NotBlank]; arguments\
+  \ [org.springframework.context.support.DefaultMessageSourceResolvable: codes [request.title,title];\
+  \ arguments []; default message [title]]; default message [title is required]] }"
