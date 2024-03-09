@@ -20,17 +20,23 @@ public class BookController {
     @PostMapping("/books")
     public ResponseEntity<Response> addBook(@RequestBody @Valid Request request) {
         Book newBook = toModel(request);
+
         Book registeredBook = registerNewBook.registerNewBook(newBook);
-        String formattedPublishedDate = registeredBook.publishedDate().toString();
-        Response response = new Response(registeredBook.title(), registeredBook.author(), formattedPublishedDate);
-        return new ResponseEntity<>(
-                response,
-                HttpStatus.OK);
+
+        return getResponseResponseEntity(registeredBook);
     }
 
     // TODO: use MapStruct
     private Book toModel(Request request) {
         return new Book(request.title(), request.author(), LocalDate.parse(request.publishedDate()));
+    }
+
+    private ResponseEntity<Response> getResponseResponseEntity(Book registeredBook) {
+        String formattedPublishedDate = registeredBook.publishedDate().toString();
+        Response response = new Response(registeredBook.title(), registeredBook.author(), formattedPublishedDate);
+        return new ResponseEntity<>(
+                response,
+                HttpStatus.OK);
     }
 
     record Request(
