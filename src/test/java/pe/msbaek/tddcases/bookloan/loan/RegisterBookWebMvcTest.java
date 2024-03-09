@@ -58,6 +58,18 @@ public class RegisterBookWebMvcTest {
         Approvals.verify(YamlPrinter.print(result.getResponse().getContentAsString()));
     }
 
+    @Test
+    @DisplayName("이미 존재하는 도서 정보가 있는 경우 에러 메시지를 반환한다")
+    void register_book_failed_because_of_duplicated_book() throws Exception {
+        BookController.Request request = createBookWith(title);
+        Book book = new Book(title, author, LocalDate.parse(publishedDateString));
+        given(bookRepository.findByTitle(title)).willReturn(book);
+
+        MvcResult result = getMvcResult(request, status().isBadRequest());
+
+        Approvals.verify(YamlPrinter.print(result.getResponse().getContentAsString()));
+    }
+
     private MvcResult getMvcResult(BookController.Request request, ResultMatcher expectedStatus) throws Exception {
         return mockMvc.perform(post("/books")
                         .contentType(MediaType.APPLICATION_JSON)
