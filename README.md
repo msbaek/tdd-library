@@ -159,3 +159,8 @@ service --> system: return savedBook
 ### WebMvcTest Test
 
 - repository를 mock으로 만들어서 controller를 테스트
+
+## Issue
+- layered architecture에서는 Mock Test 접근이 적합
+- vertical slicing architecture에서는 Acceptance Test 접근이 적합
+  - JPA 보다 Stub을 사용하는 것이 더 나을 듯
