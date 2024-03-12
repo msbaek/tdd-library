@@ -1,15 +1,13 @@
 package pe.msbaek.tddcases.bookloan.loan;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Service
 public class RegisterNewBook {
-    private BookRepository bookRepository;
-
-    public RegisterNewBook() {
-    }
+    private final BookRepository bookRepository;
 
     Book registerNewBook(Book request) {
         // validate
