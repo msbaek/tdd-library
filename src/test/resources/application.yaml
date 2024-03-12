@@ -1,0 +1,13 @@
+spring:
+  decorator:
+    datasource:
+      p6spy:
+        enable-logging: true
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  docker:
+    compose:
+      lifecycle-management: start_only
+      skip:
+        in-tests: false

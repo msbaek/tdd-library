@@ -1,9 +1,8 @@
+# main
 spring:
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
   docker:
     compose:
       lifecycle-management: start_only
-      skip:
-        in-tests: false
