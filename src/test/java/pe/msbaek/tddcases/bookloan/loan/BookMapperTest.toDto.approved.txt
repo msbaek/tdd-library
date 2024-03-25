@@ -1,0 +1,1 @@
+BookDto(id=null, title=title, author=author, publishedDate=2024-03-25)

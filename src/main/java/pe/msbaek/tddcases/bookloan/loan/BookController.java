@@ -32,8 +32,8 @@ public class BookController {
     }
 
     private ResponseEntity<Response> getResponseResponseEntity(Book registeredBook) {
-        String formattedPublishedDate = registeredBook.publishedDate().toString();
-        Response response = new Response(registeredBook.title(), registeredBook.author(), formattedPublishedDate);
+        String formattedPublishedDate = registeredBook.getPublishedDate().toString();
+        Response response = new Response(registeredBook.getTitle(), registeredBook.getAuthor(), formattedPublishedDate);
         return new ResponseEntity<>(
                 response,
                 HttpStatus.OK);

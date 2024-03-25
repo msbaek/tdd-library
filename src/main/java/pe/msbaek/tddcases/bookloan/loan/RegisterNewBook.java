@@ -11,7 +11,7 @@ public class RegisterNewBook {
 
     Book registerNewBook(Book request) {
         // validate
-        bookRepository.findByTitle(request.title())
+        bookRepository.findByTitle(request.getTitle())
                 .ifPresent(book -> {
                     throw new IllegalArgumentException("title is already exists");
                 });

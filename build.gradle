@@ -43,6 +43,11 @@ dependencies {
 	testImplementation 'io.rest-assured:rest-assured:5.4.0'
 	testImplementation 'com.approvaltests:approvaltests:22.4.0'
 	testImplementation 'com.github.HMInternational:ktown4u-utils:v1.3.0'
+
+	// mapStruct
+	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+	annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
 }
 
 dependencyManagement {

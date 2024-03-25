@@ -1,0 +1,1 @@
+Book{id=1, title='title', author='author', publishedDate=2021-08-01, copies=[]}

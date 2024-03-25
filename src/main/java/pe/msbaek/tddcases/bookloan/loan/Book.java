@@ -3,15 +3,18 @@ package pe.msbaek.tddcases.bookloan.loan;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
-@Accessors(fluent = true)
+// @Accessors(fluent = true)
 @NoArgsConstructor
 @Getter
+@Setter
 @Entity
 public class Book {
     @Id
@@ -41,5 +44,16 @@ public class Book {
     public void removeCopy(BookCopy copy) {
         copies.remove(copy);
         copy.setBook(null);
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", publishedDate=" + publishedDate +
+                ", copies=" + copies +
+                '}';
     }
 }
