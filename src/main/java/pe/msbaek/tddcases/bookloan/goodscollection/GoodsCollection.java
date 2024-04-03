@@ -3,8 +3,8 @@ package pe.msbaek.tddcases.bookloan.goodscollection;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 public class GoodsCollection {
@@ -14,7 +14,7 @@ public class GoodsCollection {
     private LocalDateTime createdAt;
     private Long updatedBy;
     private LocalDateTime updatedAt;
-    private Set<GoodsCollectionItem> goodsCollectionItems = new HashSet<>();
+    private List<GoodsCollectionItem> goodsCollectionItems = new ArrayList<>();
 
     public GoodsCollection(long id, String name, long createdBy, LocalDateTime createdAt) {
         this.id = id;

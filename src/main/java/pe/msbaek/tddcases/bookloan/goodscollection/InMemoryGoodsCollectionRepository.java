@@ -2,6 +2,7 @@ package pe.msbaek.tddcases.bookloan.goodscollection;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +17,7 @@ import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toMap;
 
+@Profile("test")
 @Repository
 public class InMemoryGoodsCollectionRepository implements GoodsCollectionRepository {
     private List<Goods> goodsList;

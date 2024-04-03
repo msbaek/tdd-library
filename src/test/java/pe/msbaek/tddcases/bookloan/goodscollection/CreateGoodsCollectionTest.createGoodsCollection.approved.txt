@@ -9,10 +9,10 @@ goodsCollectionItems:
   goodsId: "GD00112218"
   barcode: "8804775369223"
 - id: 122
-  goodsNo: 112215
-  goodsId: "GD00112215"
-  barcode: "9000000112215"
-- id: 123
   goodsNo: 112216
   goodsId: "GD00112216"
   barcode: "9000000112216"
+- id: 123
+  goodsNo: 112215
+  goodsId: "GD00112215"
+  barcode: "9000000112215"
