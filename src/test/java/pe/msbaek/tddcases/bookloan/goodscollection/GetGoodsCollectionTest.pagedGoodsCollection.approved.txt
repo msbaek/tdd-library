@@ -1,0 +1,31 @@
+---
+- id: 1
+  name: "상품종"
+  createdBy: 1
+  createdAt: "2022-01-01 00:00:00"
+  updatedBy: 1
+  updatedAt: "2022-01-01 00:00:00"
+- id: 2
+  name: "상품종2"
+  createdBy: 1
+  createdAt: "2022-01-01 00:00:00"
+  updatedBy: 1
+  updatedAt: "2022-01-01 00:00:00"
+- id: 3
+  name: "상품종3"
+  createdBy: 1
+  createdAt: "2022-01-01 00:00:00"
+  updatedBy: 1
+  updatedAt: "2022-01-01 00:00:00"
+- id: 4
+  name: "상품종4"
+  createdBy: 1
+  createdAt: "2022-01-01 00:00:00"
+  updatedBy: 1
+  updatedAt: "2022-01-01 00:00:00"
+- id: 5
+  name: "상품종5"
+  createdBy: 1
+  createdAt: "2022-01-01 00:00:00"
+  updatedBy: 1
+  updatedAt: "2022-01-01 00:00:00"
