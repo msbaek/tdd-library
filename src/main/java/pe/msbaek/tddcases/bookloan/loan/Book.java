@@ -16,6 +16,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@org.jmolecules.ddd.annotation.Entity
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

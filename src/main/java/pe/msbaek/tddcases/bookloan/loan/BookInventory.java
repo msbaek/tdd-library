@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import pe.msbaek.tddcases.bookloan.loan.Book;
 
 @Entity
+@org.jmolecules.ddd.annotation.Entity
 public class BookInventory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -3,6 +3,7 @@ package pe.msbaek.tddcases.bookloan.loan;
 import jakarta.persistence.*;
 
 @Entity
+@org.jmolecules.ddd.annotation.Entity
 public class BookCopy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

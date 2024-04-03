@@ -1,11 +1,12 @@
 package pe.msbaek.tddcases.bookloan.loan;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.jmolecules.architecture.hexagonal.PrimaryAdapter;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
+@PrimaryAdapter
 public class RegisterNewBook {
     private final BookRepository bookRepository;
 
