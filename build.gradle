@@ -30,6 +30,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-graphql'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	implementation 'org.springframework.modulith:spring-modulith-starter-core'
 	implementation 'org.springframework.modulith:spring-modulith-starter-jpa'
 	implementation 'org.springframework.boot:spring-boot-docker-compose'
@@ -39,15 +41,20 @@ dependencies {
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'io.projectreactor:reactor-test'
+	testImplementation 'org.springframework.graphql:spring-graphql-test'
 	testImplementation 'org.springframework.modulith:spring-modulith-starter-test'
 	testImplementation 'io.rest-assured:rest-assured:5.4.0'
-	testImplementation 'com.approvaltests:approvaltests:22.4.0'
-	testImplementation 'com.github.HMInternational:ktown4u-utils:v1.3.0'
+	testImplementation 'com.approvaltests:approvaltests:23.0.1'
+	testImplementation 'com.github.HMInternational:ktown4u-utils:v1.5.0'
 
 	// mapStruct
 	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
 	annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+
+	implementation 'org.jmolecules:jmolecules-ddd:1.9.0'
+	implementation 'org.jmolecules:jmolecules-hexagonal-architecture:1.9.0'
 }
 
 dependencyManagement {
