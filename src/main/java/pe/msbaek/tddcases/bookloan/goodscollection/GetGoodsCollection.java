@@ -22,11 +22,11 @@ import java.util.List;
 @PrimaryAdapter
 public class GetGoodsCollection {
 
-    private final InMemoryGoodsCollectionRepository inMemoryGoodsCollectionRepository = new InMemoryGoodsCollectionRepository();
+    private final GoodsCollectionRepository repository;
 
     @QueryMapping("pagedGoodsCollection")
     public Page<GoodsCollectionDto> pagedGoodsCollection(@Argument final SearchDto request) {
-        List<GoodsCollection> collections = inMemoryGoodsCollectionRepository.findByNameContaining(request.keyword(), request.pageableWithSort());
+        List<GoodsCollection> collections = repository.findByNameContaining(request.keyword(), request.pageableWithSort());
         long total = collections.size();
         List<GoodsCollectionDto> result = collections.stream()
                 .map(GoodsCollectionDto::of)
