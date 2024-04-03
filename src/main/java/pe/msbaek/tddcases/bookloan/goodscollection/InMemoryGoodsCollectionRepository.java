@@ -1,8 +1,12 @@
 package pe.msbaek.tddcases.bookloan.goodscollection;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -18,31 +22,26 @@ public class InMemoryGoodsCollectionRepository implements GoodsCollectionReposit
     private Map<Long, GoodsCollection> goodsCollectionMap;
     private AtomicLong goodsCollectionIdGenerator = new AtomicLong(1);
     private AtomicLong goodsCollectionItemIdGenerator = new AtomicLong(1);
+
     InMemoryGoodsCollectionRepository() {
         init();
     }
 
     private void init() {
-        goodsList = List.of(
-                new Goods(111839L, "GD00111839", "8809888410251"),
-                new Goods(111838L, "GD00111838", "9000000111838"),
-                new Goods(111836L, "GD00111836", "8809973502397"),
-                new Goods(111835L, "GD00111835", "8809973502397"),
-                new Goods(111834L, "GD00111834", "8809973502397"),
-                new Goods(111833L, "GD00111833", "8809973502397"),
-                new Goods(111832L, "GD00111832", "8809973502397"),
-                new Goods(111831L, "GD00111831", "8809973502397"),
-                new Goods(111830L, "GD00111830", "8809973502397"),
-                new Goods(111826L, "GD00111826", "8809966901251"));
+        goodsList = loadGoodsList();
         goodsCollectionMap = IntStream.range(0, 40)
                 .mapToLong(i -> nextId())
                 .mapToObj(id -> createGoodsCollection(id))
                 .collect(toMap(GoodsCollection::getId, goodsCollection -> goodsCollection));
     }
 
+    private List<Goods> loadGoodsList() {
+        return readGoods();
+    }
+
     private GoodsCollection createGoodsCollection(long id) {
         GoodsCollection goodsCollection = new GoodsCollection(id, "name" + id, 1L, LocalDateTime.now());
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) {
             Goods goods = goodsList.get((int) (id % goodsList.size()));
             GoodsCollectionItem item = GoodsCollectionItem.of(goods);
             item.setId(goodsCollectionItemIdGenerator.getAndIncrement());
@@ -84,8 +83,19 @@ public class InMemoryGoodsCollectionRepository implements GoodsCollectionReposit
     public GoodsCollection save(GoodsCollection goodsCollection) {
         goodsCollection.setId(nextId());
         goodsCollection.getGoodsCollectionItems().stream()
-                        .forEach(i -> i.setId(nextItemId()));
+                .forEach(i -> i.setId(nextItemId()));
         goodsCollectionMap.put(goodsCollection.getId(), goodsCollection);
         return goodsCollection;
+    }
+
+    List<Goods> readGoods() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        String fileName = "goods.json";
+        try (InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(fileName)) {
+            return objectMapper.readValue(inputStream, new TypeReference<>() {
+            });
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

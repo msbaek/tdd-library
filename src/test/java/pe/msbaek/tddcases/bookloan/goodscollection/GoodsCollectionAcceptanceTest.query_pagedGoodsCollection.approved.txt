@@ -4,138 +4,138 @@
   createdBy: 1
   createdAt: "2003-05-03T10:11:12.134567"
   goodsCollectionItems:
-  - goodsNo: 111838
-    goodsId: "GD00111838"
-    barcode: "9000000111838"
-  - goodsNo: 111838
-    goodsId: "GD00111838"
-    barcode: "9000000111838"
-  - goodsNo: 111838
-    goodsId: "GD00111838"
-    barcode: "9000000111838"
+  - goodsNo: 112216
+    goodsId: "GD00112216"
+    barcode: "9000000112216"
+  - goodsNo: 112216
+    goodsId: "GD00112216"
+    barcode: "9000000112216"
+  - goodsNo: 112216
+    goodsId: "GD00112216"
+    barcode: "9000000112216"
 - id: 2
   name: "name2"
   createdBy: 1
   createdAt: "2003-05-03T10:11:12.134567"
   goodsCollectionItems:
-  - goodsNo: 111836
-    goodsId: "GD00111836"
-    barcode: "8809973502397"
-  - goodsNo: 111836
-    goodsId: "GD00111836"
-    barcode: "8809973502397"
-  - goodsNo: 111836
-    goodsId: "GD00111836"
-    barcode: "8809973502397"
+  - goodsNo: 112215
+    goodsId: "GD00112215"
+    barcode: "9000000112215"
+  - goodsNo: 112215
+    goodsId: "GD00112215"
+    barcode: "9000000112215"
+  - goodsNo: 112215
+    goodsId: "GD00112215"
+    barcode: "9000000112215"
 - id: 3
   name: "name3"
   createdBy: 1
   createdAt: "2003-05-03T10:11:12.134567"
   goodsCollectionItems:
-  - goodsNo: 111835
-    goodsId: "GD00111835"
-    barcode: "8809973502397"
-  - goodsNo: 111835
-    goodsId: "GD00111835"
-    barcode: "8809973502397"
-  - goodsNo: 111835
-    goodsId: "GD00111835"
-    barcode: "8809973502397"
+  - goodsNo: 112214
+    goodsId: "GD00112214"
+    barcode: "9000000112214"
+  - goodsNo: 112214
+    goodsId: "GD00112214"
+    barcode: "9000000112214"
+  - goodsNo: 112214
+    goodsId: "GD00112214"
+    barcode: "9000000112214"
 - id: 4
   name: "name4"
   createdBy: 1
   createdAt: "2003-05-03T10:11:12.134567"
   goodsCollectionItems:
-  - goodsNo: 111834
-    goodsId: "GD00111834"
-    barcode: "8809973502397"
-  - goodsNo: 111834
-    goodsId: "GD00111834"
-    barcode: "8809973502397"
-  - goodsNo: 111834
-    goodsId: "GD00111834"
-    barcode: "8809973502397"
+  - goodsNo: 112213
+    goodsId: "GD00112213"
+    barcode: "8809868449639"
+  - goodsNo: 112213
+    goodsId: "GD00112213"
+    barcode: "8809868449639"
+  - goodsNo: 112213
+    goodsId: "GD00112213"
+    barcode: "8809868449639"
 - id: 5
   name: "name5"
   createdBy: 1
   createdAt: "2003-05-03T10:11:12.134567"
   goodsCollectionItems:
-  - goodsNo: 111833
-    goodsId: "GD00111833"
-    barcode: "8809973502397"
-  - goodsNo: 111833
-    goodsId: "GD00111833"
-    barcode: "8809973502397"
-  - goodsNo: 111833
-    goodsId: "GD00111833"
-    barcode: "8809973502397"
+  - goodsNo: 112212
+    goodsId: "GD00112212"
+    barcode: "8809868449639"
+  - goodsNo: 112212
+    goodsId: "GD00112212"
+    barcode: "8809868449639"
+  - goodsNo: 112212
+    goodsId: "GD00112212"
+    barcode: "8809868449639"
 - id: 6
   name: "name6"
   createdBy: 1
   createdAt: "2003-05-03T10:11:12.134567"
   goodsCollectionItems:
-  - goodsNo: 111832
-    goodsId: "GD00111832"
-    barcode: "8809973502397"
-  - goodsNo: 111832
-    goodsId: "GD00111832"
-    barcode: "8809973502397"
-  - goodsNo: 111832
-    goodsId: "GD00111832"
-    barcode: "8809973502397"
+  - goodsNo: 112210
+    goodsId: "GD00112210"
+    barcode: "8809315149921"
+  - goodsNo: 112210
+    goodsId: "GD00112210"
+    barcode: "8809315149921"
+  - goodsNo: 112210
+    goodsId: "GD00112210"
+    barcode: "8809315149921"
 - id: 7
   name: "name7"
   createdBy: 1
   createdAt: "2003-05-03T10:11:12.134567"
   goodsCollectionItems:
-  - goodsNo: 111831
-    goodsId: "GD00111831"
-    barcode: "8809973502397"
-  - goodsNo: 111831
-    goodsId: "GD00111831"
-    barcode: "8809973502397"
-  - goodsNo: 111831
-    goodsId: "GD00111831"
-    barcode: "8809973502397"
+  - goodsNo: 112208
+    goodsId: "GD00112208"
+    barcode: "8809888410275"
+  - goodsNo: 112208
+    goodsId: "GD00112208"
+    barcode: "8809888410275"
+  - goodsNo: 112208
+    goodsId: "GD00112208"
+    barcode: "8809888410275"
 - id: 8
   name: "name8"
   createdBy: 1
   createdAt: "2003-05-03T10:11:12.134567"
   goodsCollectionItems:
-  - goodsNo: 111830
-    goodsId: "GD00111830"
-    barcode: "8809973502397"
-  - goodsNo: 111830
-    goodsId: "GD00111830"
-    barcode: "8809973502397"
-  - goodsNo: 111830
-    goodsId: "GD00111830"
-    barcode: "8809973502397"
+  - goodsNo: 112207
+    goodsId: "GD00112207"
+    barcode: "8809888410275"
+  - goodsNo: 112207
+    goodsId: "GD00112207"
+    barcode: "8809888410275"
+  - goodsNo: 112207
+    goodsId: "GD00112207"
+    barcode: "8809888410275"
 - id: 9
   name: "name9"
   createdBy: 1
   createdAt: "2003-05-03T10:11:12.134567"
   goodsCollectionItems:
-  - goodsNo: 111826
-    goodsId: "GD00111826"
-    barcode: "8809966901251"
-  - goodsNo: 111826
-    goodsId: "GD00111826"
-    barcode: "8809966901251"
-  - goodsNo: 111826
-    goodsId: "GD00111826"
-    barcode: "8809966901251"
+  - goodsNo: 112206
+    goodsId: "GD00112206"
+    barcode: "9000000112206"
+  - goodsNo: 112206
+    goodsId: "GD00112206"
+    barcode: "9000000112206"
+  - goodsNo: 112206
+    goodsId: "GD00112206"
+    barcode: "9000000112206"
 - id: 10
   name: "name10"
   createdBy: 1
   createdAt: "2003-05-03T10:11:12.134567"
   goodsCollectionItems:
-  - goodsNo: 111839
-    goodsId: "GD00111839"
-    barcode: "8809888410251"
-  - goodsNo: 111839
-    goodsId: "GD00111839"
-    barcode: "8809888410251"
-  - goodsNo: 111839
-    goodsId: "GD00111839"
-    barcode: "8809888410251"
+  - goodsNo: 112205
+    goodsId: "GD00112205"
+    barcode: "9000000112205"
+  - goodsNo: 112205
+    goodsId: "GD00112205"
+    barcode: "9000000112205"
+  - goodsNo: 112205
+    goodsId: "GD00112205"
+    barcode: "9000000112205"

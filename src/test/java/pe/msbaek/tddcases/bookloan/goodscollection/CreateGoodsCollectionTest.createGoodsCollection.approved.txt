@@ -5,14 +5,14 @@ createdBy: 1
 createdAt: "2003-05-03T10:11:12.134567"
 goodsCollectionItems:
 - id: 121
-  goodsNo: 111838
-  goodsId: "GD00111838"
-  barcode: "9000000111838"
+  goodsNo: 112218
+  goodsId: "GD00112218"
+  barcode: "8804775369223"
 - id: 122
-  goodsNo: 111836
-  goodsId: "GD00111836"
-  barcode: "8809973502397"
+  goodsNo: 112215
+  goodsId: "GD00112215"
+  barcode: "9000000112215"
 - id: 123
-  goodsNo: 111839
-  goodsId: "GD00111839"
-  barcode: "8809888410251"
+  goodsNo: 112216
+  goodsId: "GD00112216"
+  barcode: "9000000112216"
