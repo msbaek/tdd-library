@@ -1,26 +1,28 @@
 package pe.msbaek.tddcases.bookloan.goodscollection;
 
-import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.IntStream;
 
-@Profile("test")
-@Repository("goodsCollectionRepository")
+import static java.util.stream.Collectors.toMap;
+
 public class InMemoryGoodsCollectionRepository implements GoodsCollectionRepository {
-    static final Map<Long, GoodsCollection> goodsCollectionMap = new HashMap<Long, GoodsCollection>();
+    static final Map<Long, GoodsCollection> goodsCollectionMap;
     static AtomicLong goodsCollectionIdGenerator = new AtomicLong(1);
 
     static {
-        for(int i = 0; i < 40; i++) {
-            long id = InMemoryGoodsCollectionRepository.goodsCollectionIdGenerator.getAndIncrement();
-            InMemoryGoodsCollectionRepository.goodsCollectionMap.put(id, new GoodsCollection(id, "name" + id, 1L, LocalDateTime.now()));
-        }
+        goodsCollectionMap = IntStream.range(0, 40)
+                .mapToLong(i -> nextId())
+                .mapToObj(id -> new GoodsCollection(id, "name" + id, 1L, LocalDateTime.now()))
+                .collect(toMap(GoodsCollection::getId, goodsCollection -> goodsCollection));
+    }
+
+    private static Long nextId() {
+        return goodsCollectionIdGenerator.getAndIncrement();
     }
 
     @Override
