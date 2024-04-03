@@ -6,3 +6,6 @@ spring:
   docker:
     compose:
       lifecycle-management: start_only
+  graphql:
+    graphiql:
+      enabled: true
