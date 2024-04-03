@@ -9,3 +9,6 @@ spring:
   graphql:
     graphiql:
       enabled: true
+logging:
+  level:
+    org.springframework.boot.autoconfigure.logging: ERROR
