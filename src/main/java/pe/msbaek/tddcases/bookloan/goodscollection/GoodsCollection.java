@@ -22,4 +22,18 @@ public class GoodsCollection {
         this.createdBy = createdBy;
         this.createdAt = createdAt;
     }
+
+    public GoodsCollection(String name, Long createdBy) {
+        this.name = name;
+        this.createdAt = LocalDateTime.now();
+        this.createdBy = createdBy;
+    }
+
+    public void add(GoodsCollectionItem item) {
+        goodsCollectionItems.add(item);
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

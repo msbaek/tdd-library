@@ -21,7 +21,18 @@ public class CreateGoodsCollection {
     @MutationMapping("createGoodsCollection")
     public Long createGoodsCollection(@Argument final CreateGoodsCollectionRequest request) {
         log.info("request: {}", request);
-        return 1l;
+        List<Goods> goodsList = repository.listGoodsByIds(request.ids());
+        GoodsCollection goodsCollection = new GoodsCollection(request.name(), userId());
+        for (Goods goods : goodsList) {
+            goodsCollection.add(GoodsCollectionItem.of(goods));
+        }
+
+        GoodsCollection result = repository.save(goodsCollection);
+        return result.getId();
+    }
+
+    private Long userId() {
+        return 1L;
     }
 
     record CreateGoodsCollectionRequest(String name, List<String> ids) {

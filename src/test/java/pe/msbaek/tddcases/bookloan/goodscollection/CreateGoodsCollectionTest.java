@@ -1,5 +1,7 @@
 package pe.msbaek.tddcases.bookloan.goodscollection;
 
+import com.ktown4u.utils.Neutralizer;
+import com.ktown4u.utils.YamlPrinter;
 import org.approvaltests.Approvals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,6 +23,6 @@ class CreateGoodsCollectionTest {
         CreateGoodsCollection.CreateGoodsCollectionRequest request = new CreateGoodsCollection.CreateGoodsCollectionRequest("상품군 이름", List.of("GD00111839", "GD00111838", "GD00111836"));
         Long id = createGoodsCollection.createGoodsCollection(request);
         GoodsCollection result = repository.findById(id).get();
-        Approvals.verify(result);
+        Approvals.verify(Neutralizer.localDateTime(YamlPrinter.printWithExclusions(result, "updatedBy", "updatedAt")));
     }
 }
