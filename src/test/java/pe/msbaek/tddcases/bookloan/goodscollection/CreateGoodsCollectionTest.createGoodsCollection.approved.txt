@@ -1,18 +1,18 @@
 ---
-id: 41
+id: 12
 name: "상품군 이름"
 createdBy: 1
 createdAt: "2003-05-03T10:11:12.134567"
 goodsCollectionItems:
-- id: 121
+- id: 34
   goodsNo: 112218
   goodsId: "GD00112218"
   barcode: "8804775369223"
-- id: 122
+- id: 35
   goodsNo: 112216
   goodsId: "GD00112216"
   barcode: "9000000112216"
-- id: 123
+- id: 36
   goodsNo: 112215
   goodsId: "GD00112215"
   barcode: "9000000112215"

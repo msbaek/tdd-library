@@ -31,7 +31,7 @@ public class InMemoryGoodsCollectionRepository implements GoodsCollectionReposit
 
     private void init() {
         goodsList = loadGoodsList();
-        goodsCollectionMap = IntStream.range(0, 40)
+        goodsCollectionMap = IntStream.range(0, 11)
                 .mapToLong(i -> nextId())
                 .mapToObj(id -> createGoodsCollection(id))
                 .collect(toMap(GoodsCollection::getId, goodsCollection -> goodsCollection));
