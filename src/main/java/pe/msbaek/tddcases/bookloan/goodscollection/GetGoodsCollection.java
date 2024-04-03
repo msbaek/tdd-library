@@ -34,11 +34,26 @@ public class GetGoodsCollection {
         return new PageImpl<>(result, PageRequest.of(request.page(), request.size()), total);
     }
 
+    public record GoodsCollectionItemDto(Long goodsNo, String goodsId, String barcode) {
+        static GoodsCollectionItemDto from(GoodsCollectionItem goodsCollectionItem) {
+            return new GoodsCollectionItemDto(goodsCollectionItem.getGoodsNo(), goodsCollectionItem.getGoodsId(), goodsCollectionItem.getBarcode());
+        }
+    }
+
     public record GoodsCollectionDto(Long id, String name, Long createdBy, String createdAt, Long updatedBy,
-                                     String updatedAt) {
-        public static GoodsCollectionDto of(GoodsCollection model) {
-            return new GoodsCollectionDto(model.getId(), model.getName(), model.getCreatedBy(),
-                    localDateTimeString(model.getCreatedAt()), model.getUpdatedBy(), localDateTimeString(model.getUpdatedAt()));
+                                     String updatedAt, List<GoodsCollectionItemDto> goodsCollectionItems) {
+        public static GoodsCollectionDto of(GoodsCollection goodsCollection) {
+            List<GoodsCollectionItemDto> goodsCollectionItems = goodsCollection.getGoodsCollectionItems().stream()
+                    .map(goodsCollectionItem -> GoodsCollectionItemDto.from(goodsCollectionItem))
+                    .toList();
+            return of(goodsCollection, goodsCollectionItems);
+        }
+
+        private static GoodsCollectionDto of(GoodsCollection goodsCollection, List<GoodsCollectionItemDto> goodsCollectionItems) {
+            return new GoodsCollectionDto(goodsCollection.getId(), goodsCollection.getName(),
+                    goodsCollection.getCreatedBy(), localDateTimeString(goodsCollection.getCreatedAt()),
+                    goodsCollection.getUpdatedBy(), localDateTimeString(goodsCollection.getUpdatedAt()),
+                    goodsCollectionItems);
         }
 
         private static String localDateTimeString(LocalDateTime dateTime) {

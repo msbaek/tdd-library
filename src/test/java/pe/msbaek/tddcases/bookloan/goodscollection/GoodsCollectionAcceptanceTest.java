@@ -1,5 +1,6 @@
-package pe.msbaek.tddcases.bookloan.gooodscollection;
+package pe.msbaek.tddcases.bookloan.goodscollection;
 
+import com.ktown4u.utils.Neutralizer;
 import com.ktown4u.utils.YamlPrinter;
 import org.approvaltests.Approvals;
 import org.junit.jupiter.api.Test;
@@ -25,7 +26,7 @@ public class GoodsCollectionAcceptanceTest {
         String queryString = """
                 query {
                   pagedGoodsCollection(request: {
-                    keyword: "상품군",
+                    keyword: "name",
                     type: "type",
                     page: 0,
                     size: 10
@@ -33,6 +34,8 @@ public class GoodsCollectionAcceptanceTest {
                     content {
                       id
                       name
+                      createdBy
+                      createdAt
                       goodsCollectionItems {
                         goodsNo
                         goodsId
@@ -46,7 +49,7 @@ public class GoodsCollectionAcceptanceTest {
         List<GetGoodsCollection.GoodsCollectionDto> result = request(queryString, "pagedGoodsCollection.content")
                 .entityList(GetGoodsCollection.GoodsCollectionDto.class)
                 .get();
-        Approvals.verify(YamlPrinter.printWithExclusions(result, "createdBy" ,"createdAt" ,"updatedBy" ,"updatedAt"));
+        Approvals.verify(Neutralizer.localDateTime(YamlPrinter.printWithExclusions(result, "updatedBy" ,"updatedAt")));
     }
 
     @Test

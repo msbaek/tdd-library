@@ -1,6 +1,7 @@
 package pe.msbaek.tddcases.bookloan.goodscollection;
 
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toMap;
 
+@Repository
 public class InMemoryGoodsCollectionRepository implements GoodsCollectionRepository {
     private List<Goods> goodsList;
     private Map<Long, GoodsCollection> goodsCollectionMap;
@@ -21,10 +23,6 @@ public class InMemoryGoodsCollectionRepository implements GoodsCollectionReposit
     }
 
     private void init() {
-        goodsCollectionMap = IntStream.range(0, 40)
-                .mapToLong(i -> nextId())
-                .mapToObj(id -> new GoodsCollection(id, "name" + id, 1L, LocalDateTime.now()))
-                .collect(toMap(GoodsCollection::getId, goodsCollection -> goodsCollection));
         goodsList = List.of(
                 new Goods(111839L, "GD00111839", "8809888410251"),
                 new Goods(111838L, "GD00111838", "9000000111838"),
@@ -36,6 +34,21 @@ public class InMemoryGoodsCollectionRepository implements GoodsCollectionReposit
                 new Goods(111831L, "GD00111831", "8809973502397"),
                 new Goods(111830L, "GD00111830", "8809973502397"),
                 new Goods(111826L, "GD00111826", "8809966901251"));
+        goodsCollectionMap = IntStream.range(0, 40)
+                .mapToLong(i -> nextId())
+                .mapToObj(id -> createGoodsCollection(id))
+                .collect(toMap(GoodsCollection::getId, goodsCollection -> goodsCollection));
+    }
+
+    private GoodsCollection createGoodsCollection(long id) {
+        GoodsCollection goodsCollection = new GoodsCollection(id, "name" + id, 1L, LocalDateTime.now());
+        for(int i = 0; i < 3; i++) {
+            Goods goods = goodsList.get((int) (id % goodsList.size()));
+            GoodsCollectionItem item = GoodsCollectionItem.of(goods);
+            item.setId(goodsCollectionItemIdGenerator.getAndIncrement());
+            goodsCollection.add(item);
+        }
+        return goodsCollection;
     }
 
     private Long nextId() {

@@ -4,15 +4,15 @@ name: "상품군 이름"
 createdBy: 1
 createdAt: "2003-05-03T10:11:12.134567"
 goodsCollectionItems:
-- id: 1
-  goodsNo: 111836
-  goodsId: "GD00111836"
-  barcode: "8809973502397"
-- id: 2
+- id: 121
   goodsNo: 111838
   goodsId: "GD00111838"
   barcode: "9000000111838"
-- id: 3
+- id: 122
+  goodsNo: 111836
+  goodsId: "GD00111836"
+  barcode: "8809973502397"
+- id: 123
   goodsNo: 111839
   goodsId: "GD00111839"
   barcode: "8809888410251"
