@@ -9,19 +9,21 @@ import org.springframework.boot.test.autoconfigure.graphql.tester.AutoConfigureH
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.graphql.test.tester.GraphQlTester;
 import org.springframework.graphql.test.tester.HttpGraphQlTester;
-import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@ActiveProfiles("test")
+// @ActiveProfiles("test")
 @AutoConfigureHttpGraphQlTester
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 public class GoodsCollectionAcceptanceTest {
     @Autowired private HttpGraphQlTester graphQlTester;
+    @Autowired private GoodsCollectionRepository goodsCollectionRepository;
 
     @Test
+    @Sql("classpath:GOODS.sql")
     public void query_pagedGoodsCollection() throws Exception {
         String queryString = """
                 query {
@@ -53,6 +55,7 @@ public class GoodsCollectionAcceptanceTest {
     }
 
     @Test
+    @Sql("classpath:GetGoodsCollectionsTest.sql")
     public void create_goods_collection() throws Exception {
         String queryString = """
                 mutation {
