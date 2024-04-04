@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.graphql.test.tester.GraphQlTester;
 import org.springframework.graphql.test.tester.HttpGraphQlTester;
 import org.springframework.test.context.jdbc.Sql;
+import pe.msbaek.tddcases.bookloan.goodscollection.domain.GoodsCollectionRepository;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package pe.msbaek.tddcases.bookloan.goodscollection;
+package pe.msbaek.tddcases.bookloan.goodscollection.domain;
 
 import org.springframework.data.domain.Pageable;
 

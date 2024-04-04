@@ -7,6 +7,10 @@ import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import pe.msbaek.tddcases.bookloan.goodscollection.domain.Goods;
+import pe.msbaek.tddcases.bookloan.goodscollection.domain.GoodsCollection;
+import pe.msbaek.tddcases.bookloan.goodscollection.domain.GoodsCollectionItem;
+import pe.msbaek.tddcases.bookloan.goodscollection.domain.GoodsCollectionRepository;
 
 import java.util.List;
 

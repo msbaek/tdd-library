@@ -5,6 +5,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
+import pe.msbaek.tddcases.bookloan.goodscollection.domain.Goods;
+import pe.msbaek.tddcases.bookloan.goodscollection.domain.GoodsCollection;
+import pe.msbaek.tddcases.bookloan.goodscollection.domain.GoodsCollectionItem;
+import pe.msbaek.tddcases.bookloan.goodscollection.domain.GoodsCollectionRepository;
 
 import java.io.IOException;
 import java.io.InputStream;

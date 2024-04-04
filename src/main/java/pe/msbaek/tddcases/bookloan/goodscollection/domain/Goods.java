@@ -1,4 +1,4 @@
-package pe.msbaek.tddcases.bookloan.goodscollection;
+package pe.msbaek.tddcases.bookloan.goodscollection.domain;
 
 public record Goods(Long goodsNo, String goodsId, String barcode) {
     public static Goods of(Object[] row) {

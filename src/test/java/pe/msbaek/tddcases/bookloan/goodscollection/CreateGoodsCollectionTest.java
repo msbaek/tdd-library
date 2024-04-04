@@ -5,6 +5,8 @@ import com.ktown4u.utils.YamlPrinter;
 import org.approvaltests.Approvals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import pe.msbaek.tddcases.bookloan.goodscollection.domain.Goods;
+import pe.msbaek.tddcases.bookloan.goodscollection.domain.GoodsCollection;
 
 import java.util.List;
 import java.util.stream.IntStream;

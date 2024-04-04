@@ -1,8 +1,9 @@
-package pe.msbaek.tddcases.bookloan.goodscollection;
+package pe.msbaek.tddcases.bookloan.goodscollection.infra;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
+import pe.msbaek.tddcases.bookloan.goodscollection.domain.Goods;
 
 import java.util.List;
 

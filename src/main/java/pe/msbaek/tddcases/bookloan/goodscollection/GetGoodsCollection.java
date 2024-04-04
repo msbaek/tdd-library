@@ -11,6 +11,9 @@ import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import pe.msbaek.tddcases.bookloan.common.SearchDto;
+import pe.msbaek.tddcases.bookloan.goodscollection.domain.GoodsCollection;
+import pe.msbaek.tddcases.bookloan.goodscollection.domain.GoodsCollectionItem;
+import pe.msbaek.tddcases.bookloan.goodscollection.domain.GoodsCollectionRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;

@@ -1,7 +1,9 @@
-package pe.msbaek.tddcases.bookloan.goodscollection;
+package pe.msbaek.tddcases.bookloan.goodscollection.infra;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
+import pe.msbaek.tddcases.bookloan.goodscollection.domain.GoodsCollection;
+import pe.msbaek.tddcases.bookloan.goodscollection.domain.GoodsCollectionRepository;
 
 import java.util.List;
 import java.util.Optional;
